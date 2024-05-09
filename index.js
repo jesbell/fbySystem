@@ -11,11 +11,21 @@ const secretKey = "Mi Llave Ultra Secreta";
 const app = express();
 const port = 3000;
 
+app.use(express.json());
+
+
 app.get('/', (req, res) => {
     res.sendFile(__dirname + "/index.html");
 });
 
-
+app.post("/login", (req,res) => {
+    const { email, password } = req.body;
+    console.log(email);
+    console.log(password);
+    res.send(`
+        Bienvenido usuario ${email}
+    `);
+});
 
 app.listen(port, () => {
     console.log(`Servidor escuchando en http://localhost:${port}`);

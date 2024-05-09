@@ -19,13 +19,13 @@
           <h5 class="card-title text-center">Ingrese sus credenciales</h5>
           <div class="row d-flex align-items-center mb-1">
             <div class="col-12">Email:</div>
-            <div class="col-7 m-auto"><input type="text" name="email" class="form-control" /></div>
+            <div class="col-7 m-auto"><input id="email" type="email" name="email" class="form-control" /></div>
           </div>
           <div class="row d-flex align-items-center">
             <div class="col-12">Password:</div>
-            <div class="col-7 m-auto"><input type="password" name="password" class="form-control" /></div>
+            <div class="col-7 m-auto"><input id="password" type="password" name="password" class="form-control" /></div>
           </div>
-          <button class="btn bg-light my-3">Ingresar &#128373;</button>
+          <button type="submit" class="btn bg-light my-3">Ingresar &#128373;</button>
         </form>
       </div>
     </div>
@@ -46,8 +46,29 @@
       }
     </style>
 
-    <script>
+    <!-- Incluye jQuery y Axios -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+    <script>
+      $('#loginForm').submit(function (event) {
+            event.preventDefault();
+
+            // Obtiene los valores de email y password
+            const email = $('#email').val();
+            const password = $('#password').val();
+
+            console.log(email);
+            console.log(password);
+
+            // Realiza una petición POST al servidor
+            axios.post("/login", { email, password })
+            .then(response => {
+                // Inserta la respuesta del servidor en el cuerpo
+                $('body').html(response.data);
+            })
+            .catch(error => console.error('Error:', error));
+        });
     </script>
   </body>
 </html>
