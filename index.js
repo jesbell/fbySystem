@@ -20,11 +20,22 @@ app.get('/', (req, res) => {
 
 app.post("/login", (req,res) => {
     const { email, password } = req.body;
-    console.log(email);
-    console.log(password);
-    res.send(`
-        Bienvenido usuario ${email}
+    
+    const agente = agentes.find((a) => a.email === email && a.password === password);
+
+    if(agente){
+        const token = jwt.sign({ data: agente }, secretKey, { expiresIn: "2m" });
+        res.send(`
+        <a href="/Dashboard?token=${token}"> <p> Ir al Dashboard </p> </a>
+        Bienvenido, ${email}.
+        <script>
+            localStorage.setItem('token', '${token}')
+        </script>
     `);
+
+    }else{
+        res.status(401).send("Usuario o contraseña incorrecta");
+    }
 });
 
 app.listen(port, () => {
