@@ -27,15 +27,29 @@ app.post("/login", (req,res) => {
         const token = jwt.sign({ data: agente }, secretKey, { expiresIn: "2m" });
         res.send(`
         <a href="/Dashboard?token=${token}"> <p> Ir al Dashboard </p> </a>
-        Bienvenido, ${email}.
+        ${email}.
         <script>
             localStorage.setItem('token', '${token}')
         </script>
-    `);
-
+        `);
     }else{
         res.status(401).send("Usuario o contraseña incorrecta");
     }
+});
+
+const verifyToken = (req, res, next) => {
+    const token = req.query.token;
+    jwt.verify(token, secretKey, (err, decoded) => {
+        if (err) {
+            return res.status(401).send("Token inválido");
+        }
+        req.agente = decoded.data; // Guardar el usuario decodificado en el objeto de solicitud
+        next();
+    });
+};
+
+app.get('/Dashboard', verifyToken, (req, res) => {
+    res.send(`<h1>Bienvenido, ${req.agente.email}!</h1>`);
 });
 
 app.listen(port, () => {
