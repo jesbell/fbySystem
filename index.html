@@ -57,19 +57,23 @@
             const email = $('#email').val();
             const password = $('#password').val();
 
-            /* console.log(email);
-            console.log(password); */
-
-            // Realiza una petición POST al servidor
+            // Realiza una petición POST
             axios.post("/login", { 
               email, 
               password 
             })
             .then(response => {
-                // Inserta la respuesta del servidor en el cuerpo
+              if (response.data.includes("token")) {
+                // Inserta la respuesta 
                 $('body').html(response.data);
+              } else {
+                // Muestra el mensaje de error
+                $('body').html(`<p>${response.data}</p>`);
+              }
             })
-            .catch(error => console.error('Error:', error));
+            .catch(error => {
+              $('body').html(`<p>${error.response.data}</p>`);
+            });
         });
     </script>
   </body>
