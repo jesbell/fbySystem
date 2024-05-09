@@ -46,23 +46,25 @@
       }
     </style>
 
-    <!-- Incluye jQuery y Axios -->
+    <!-- jQuery y Axios -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script>
       $('#loginForm').submit(function (event) {
             event.preventDefault();
-
             // Obtiene los valores de email y password
             const email = $('#email').val();
             const password = $('#password').val();
 
-            console.log(email);
-            console.log(password);
+            /* console.log(email);
+            console.log(password); */
 
             // Realiza una petición POST al servidor
-            axios.post("/login", { email, password })
+            axios.post("/login", { 
+              email, 
+              password 
+            })
             .then(response => {
                 // Inserta la respuesta del servidor en el cuerpo
                 $('body').html(response.data);
