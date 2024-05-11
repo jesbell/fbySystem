@@ -9,7 +9,7 @@ El FBI está abriendo un departamento de informática y te ha contratado para cr
 
 | Formulario | Vista login, Dashboard|
 | --- | --- |
-| ![vista_1](/assets/formulario.png)| Login: ![vista_2](/assets/login.png) Dashboard: ![vista_2](/assets/dashboard.png) |
+| ![vista_1](/assets/formulario.png)|  ![vista_2](/assets/login.png)  ![vista_2](/assets/dashboard.png) |
 
 
 La vista principal del proyecto es un formulario sencillo, donde debemos ingresar el email y contraseña de los agentes (Datos encontrados en data/agentes.js). Al ingresar nos dara la opción de ir al Dashboard (la página con acceso restringido), que da la bienvenida. 
@@ -33,7 +33,7 @@ Lista de software y herramientas, incluyendo versiones, que necesitas para insta
 1. Para utilizar este proyecto debes clonar este repositorio en tu máquina, utilizando git.
 
 ```
-git clone git@github.com:jesbell/roommates_.git
+git clone git@github.com:jesbell/fbySystem.git
 ```
 
 2. Una vez allí puedes abrir el proyecto donde te sea más comodo. Pero dentro de la carpeta del proyecto deberas realizar las instalación de las dependencias, con el siguiente comando.
@@ -56,7 +56,7 @@ Una vez allí, puedes probar ingresando los datos correctos para hacer las prueb
 
 ## Soporte
 
-Si tienes algún problema o sugerencia, por favor abre un problema [aquí](https://github.com/jesbell/roommates_/issues).
+Si tienes algún problema o sugerencia, por favor abre un problema [aquí](https://github.com/jesbell/fbySystem/issues).
 
 ## Versionado  📌
 
