@@ -53,7 +53,7 @@ const verifyToken = (req, res, next) => {
     });
 };
 
-// respuesta si token es correcto
+// Si token es correcto muestra Dashboard
 app.get('/Dashboard', verifyToken, (req, res) => {
     res.send(`<h1>Bienvenido, ${req.agente.email}!</h1>`);
 });
